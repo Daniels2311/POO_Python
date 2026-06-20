@@ -1,11 +1,12 @@
-#lista vacia
+#lista vacia para el crud 
 listas_estudiantes = []
 
-#clase estudiantes
+#clase estudiantes (Clase padre)
 class Estudiantes:
     
-    #Atributos
+    #funcion constructor para crear los atributos
     def __init__(self, id_estudiante, nombre, apellido, edad, grado):
+        #Atributos de la clase padre
         self.id_estudiante = id_estudiante
         self.nombre = nombre
         self.apellido = apellido
@@ -17,10 +18,11 @@ class Estudiantes:
     def ingresar_curso(self):
         print(f"Ingresando al curso {self.nombre} {self.apellido} Bienvenido")
 
-#Instancias de la clase Estudiantes
+#Instancias de la clase padre Estudiantes
 estudiante_1 = Estudiantes(1, "Miguel", "Tortuga", 10, "Quinto")
 estudiante_2 = Estudiantes(2, "Donatelo", "Tortuga", 14, "Septimo")
 estudiante_3 = Estudiantes(3, "Rafael", "Tortuga", 17, "Undecimo")
+estudiante_4 = Estudiantes(4, "Leonardo", "Tortuga", 20, "Undecimo")
 
 #llamamos el metodo ingresar_curso
 estudiante_1.ingresar_curso()
@@ -31,6 +33,7 @@ estudiante_3.ingresar_curso()
 #Clase estudiantes primaria
 class Estudiantes_primaria(Estudiantes):
     def __init__(self, id_estudiante, nombre, apellido, edad, grado, contacto_familiar = [], notas = []):
+        #funcion para traer los atributos del padre para reutilizar codigo
         super().__init__(id_estudiante, nombre, apellido, edad, grado)
         
         #atributo propio de la clase estudiantes primaria
@@ -50,6 +53,7 @@ class Estudiantes_primaria(Estudiantes):
         print(f"Las notas actualizadas de {self.nombre} {self.apellido} son {self.__notas}")
     
     #metodo para polimorfismo
+    #Sobreescribimos el metodo dependiendo de nuestra necesidad
     def ingresar_curso(self):
         print(f"Ingresando al curso {self.nombre} {self.apellido} Bienvenido a primaria")
 
